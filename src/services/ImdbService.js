@@ -14,9 +14,9 @@ class ImdbService {
     let movies = [];
     const movieId = getImdbIdByRank(rank);
 
-    const randRankOne = randomWithExclude(rank, 100);
+    const randRankOne = randomWithExclude([rank], 100);
     const randIdOne = getImdbIdByRank(randRankOne);
-    const randRankTwo = randomWithExclude(rank, 100);
+    const randRankTwo = randomWithExclude([rank, randRankOne], 100);
     const randIdTwo = getImdbIdByRank(randRankTwo);
 
     const axiosInstance = Axios.create({
@@ -84,15 +84,15 @@ function shuffle(a) {
 }
 
 /**
- * Return a random number between 1 and {limit} excluding {exclude}.
- * @param {number} exclude A number to exclude as a possible return value
+ * Return a random number between 1 and {limit} excluding all numbers in {exclude}.
+ * @param {array of number} exclude An array of numbers to exclude as a possible return value
  * @param {number} limit Result will be less than or equal to limit.
  * @returns {number} A random number less than or equal to {limit}.
  */
 function randomWithExclude(exclude, limit) {
   let rand = null;
 
-  while (rand === null || rand === exclude) {
+  while (rand === null || exclude.includes(rand)) {
     rand = Math.round(Math.random() * Math.floor(limit - 1) + 1);
   }
 
