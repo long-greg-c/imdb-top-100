@@ -13,17 +13,26 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      score: 0,
-      attempts: 0,
-      isGameActive: false,
-      attemptActive: false,
-      movieList: [],
-      requestedRank: 0,
-      showRank: false,
-      loadError: false,
-      loading: false
-    };
+    let persistedState = localStorage.getItem('state');
+    if (persistedState) {
+      this.state = JSON.parse(persistedState);
+    } else {
+      this.state = {
+        score: 0,
+        attempts: 0,
+        isGameActive: false,
+        attemptActive: false,
+        movieList: [],
+        requestedRank: 0,
+        showRank: false,
+        loadError: false,
+        loading: false
+      };
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem('state', JSON.stringify(this.state));
   }
 
   render() {
