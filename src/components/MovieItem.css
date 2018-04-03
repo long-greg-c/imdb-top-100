@@ -1,0 +1,15 @@
+div.ui.raised.segment.hover-active:hover {
+    background-color: lightgrey !important;
+}
+
+div.ui.raised.segment.hover-disabled.winning-item {
+    background-color: lightgreen !important;
+}
+
+div.ui.raised.segment.hover-disabled.losing-item {
+    background-color: lightcoral !important;
+}
+
+div.ui.red.ribbon.label.hidden {
+    display: none
+}
