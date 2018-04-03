@@ -2,8 +2,10 @@
   "name": "imdb-top-100",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://long-greg-c.github.io/imdb-top-100/",
   "dependencies": {
     "axios": "^0.18.0",
+    "gh-pages": "^1.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1",
@@ -11,6 +13,8 @@
     "semantic-ui-react": "^0.79.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
