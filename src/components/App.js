@@ -40,7 +40,7 @@ class App extends Component {
       <Message
         onDismiss={() => this.setState({ loadError: false })}
         header="Load Error"
-        content="Sorry we couldn't get your movies. Please try again."
+        content="Sorry IMDB didn't provide your movies in a timely manner. Please try again with a new rank."
       />
     ) : (
       ''

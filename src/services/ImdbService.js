@@ -21,7 +21,7 @@ class ImdbService {
 
     const axiosInstance = Axios.create({
       baseURL: OMDB_API_URL,
-      timeout: 1000
+      timeout: 2000
     });
 
     return new Promise((resolve, reject) => {
