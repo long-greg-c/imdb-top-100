@@ -84,6 +84,8 @@ fabric.properties
 # modules.xml
 # .idea/misc.xml
 # *.ipr
+.idea/inspectionProfiles/
+.idea/watcherTasks.xml
 
 # Sonarlint plugin
 .idea/sonarlint
@@ -127,6 +129,5 @@ fabric.properties
 # *.ipr
 
 # Sonarlint plugin
-
 
 # End of https://www.gitignore.io/api/webstorm,intellij
