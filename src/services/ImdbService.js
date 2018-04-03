@@ -29,7 +29,6 @@ class ImdbService {
         .get(`/?apikey=${OMDB_API_KEY}&i=${movieId}&r=json`)
         .then(response => {
           const movie = response.data;
-          console.log(movie);
           movie.rank = rank;
           movies.push(movie);
           return axiosInstance.get(
@@ -38,7 +37,6 @@ class ImdbService {
         })
         .then(response => {
           const movie = response.data;
-          console.log(movie);
           movie.rank = randRankOne;
           movies.push(movie);
           return axiosInstance.get(
@@ -47,14 +45,12 @@ class ImdbService {
         })
         .then(response => {
           const movie = response.data;
-          console.log(movie);
           movie.rank = randRankTwo;
           movies.push(movie);
           movies = shuffle(movies);
           resolve(movies);
         })
         .catch(err => {
-          console.log(reject);
           reject(err);
         });
     });
