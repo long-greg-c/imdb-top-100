@@ -1,5 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Container, Header, Segment, Button, Label } from 'semantic-ui-react';
+
+import { startNewGame } from '../actions';
+
+function mapStateToProps(state) {
+  return {
+    score: state.score.score,
+    attempts: state.score.attempts,
+    isGameActive: state.gameState.isGameActive
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ startNewGame: startNewGame }, dispatch);
+}
 
 const GameHeader = props => {
   const buttonLabel = props.isGameActive ? 'New Game' : 'Play';
@@ -16,7 +32,7 @@ const GameHeader = props => {
         <Segment textAlign="center">
           A game to test your knowledge of IMDB's top 100 movies.
         </Segment>
-        <Button primary onClick={() => props.onRequestNewGame()}>
+        <Button primary onClick={() => props.startNewGame()}>
           {buttonLabel}
         </Button>
         <Label>
@@ -31,4 +47,4 @@ const GameHeader = props => {
   );
 };
 
-export default GameHeader;
+export default connect(mapStateToProps, mapDispatchToProps)(GameHeader);

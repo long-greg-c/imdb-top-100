@@ -1,6 +1,22 @@
 import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
-import MovieItem from './MovieItem';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { selectMovie } from '../actions';
+import MovieItem from '../components/MovieItem';
+
+function mapStateToProps(state) {
+  return {
+    movies: state.movieList,
+    attemptActive: state.gameState.isAttemptActive,
+    requestedRank: state.requestedRank
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ onMovieItemSelect: selectMovie }, dispatch);
+}
 
 class MovieList extends Component {
   render() {
@@ -30,4 +46,4 @@ class MovieList extends Component {
   }
 }
 
-export default MovieList;
+export default connect(mapStateToProps, mapDispatchToProps)(MovieList);
