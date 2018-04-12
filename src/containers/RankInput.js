@@ -29,7 +29,8 @@ class RankInput extends Component {
 
     this.state = {
       inputError: false,
-      validRank: false
+      validRank: false,
+      rank: 0
     };
     this.onNewRank = this.onNewRank.bind(this);
   }
@@ -59,7 +60,7 @@ class RankInput extends Component {
                 />
               </Form.Field>
               <Form.Button
-                disabled={!this.state.validRank}
+                disabled={!this.state.validRank || this.props.isNewGame}
                 onClick={() => this.onNewRank()}
               >
                 Test Me!
@@ -89,9 +90,9 @@ class RankInput extends Component {
         validRank: true
       });
     } else if (input === '') {
-      this.setState({ inputError: false, validRank: false });
+      this.setState({ inputError: false, validRank: false, rank: 0 });
     } else {
-      this.setState({ inputError: true, validRank: false });
+      this.setState({ inputError: true, validRank: false, rank: 0 });
     }
   }
 
